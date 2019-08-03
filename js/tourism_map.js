@@ -1,8 +1,8 @@
 
 var margin = {top: 20, right: 20, bottom: 20, left: 20};
 width = 1200 - margin.left - margin.right,
-height = 600 - margin.top - margin.bottom,
-formatPercent = d3.format(".1%");
+height = 700 - margin.top - margin.bottom,
+format = d3.format(",");
 
 var svg = d3.select("#map").append("svg")
 .attr("width", width + margin.left + margin.right)
@@ -22,10 +22,8 @@ queue()
 "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
 .await(ready);
 
-var legendText = ["100K", "", "5M", "", "30M", "",
-"100M"];
-var legendColors = ["#fff7bc", "#fee391", "#fec44f", "#fe9929",
-"#ec7014", "#cc4c02", "#993404", "#662506"];
+var legendText = ["","100K", "", "5M", "", "30M", "","100M"];
+var legendColors = ["#fff7bc", "#fee391", "#fec44f", "#fe9929","#ec7014", "#cc4c02", "#993404", "#662506"];
 
 
 function ready(error, data,
@@ -56,8 +54,7 @@ country.years = dataByCountyByYear[id];
 
 var color = d3.scale.threshold()
 .domain([10000, 100000, 1000000, 5000000, 10000000, 30000000, 50000000, 100000000])
-.range(["#fff7bc", "#fee391", "#fec44f", "#fe9929", "#ec7014",
-"#cc4c02", "#993404", "#662506"]);
+.range(["#fff7bc", "#fee391", "#fec44f", "#fe9929", "#ec7014","#cc4c02", "#993404", "#662506"]);
 
 
 var projection =
@@ -80,7 +77,7 @@ tooltip.transition()
 .style("opacity", 1);
 if(typeof d.years!= "undefined"){
 tooltip.html(
-"<strong>Country: </strong><span class='details'>" + d.years[1998][0].CountryName + "<br></span>" + "<strong>Visitors: </strong><span class='details'>" + d.years[1998][0].Value +"</span>"
+"<strong>Country: </strong><span class='details'>" + d.years[1998][0].CountryName + "<br></span>" + "<strong>Visitors: </strong><span class='details'>" +format(d.years[1998][0].Value) +"</span>"
 )
 .style("left", (d3.event.pageX + 15) + "px")
 .style("top", (d3.event.pageY - 28) + "px");
@@ -107,7 +104,7 @@ var legenditem = legend.selectAll(".legenditem")
 .attr("transform", function(d, i) { return "translate(" + i * 31 + ",0)"; });
 
 legenditem.append("rect")
-.attr("x", width - 1140)
+.attr("x", width - 1150)
 .attr("y", 500)
 .attr("width", 30)
 .attr("height", 6)
