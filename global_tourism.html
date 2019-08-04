@@ -50,8 +50,8 @@ body {
 <div class="header" id="myHeader">
   <h1>GLOBAL TOURISM , 1998-2017</h1>
   <button class="btn active" onclick="slideone()">1</button>
-  <button class="btn" onclick="slidetwo()">2</button>
-  <button class="btn" onclick="slidethree()">3</button>
+  <button class="btn" onclick="slide(2)">2</button>
+  <button class="btn" onclick="slide(3)">3</button>
 </div>
 
 <!-- Photo Grid -->
@@ -77,18 +77,23 @@ function slideone() {
 
 
 // Second slide
-function slidetwo() {
- console.log('SLIDE TWO');
+function slide(number) {
  elmnt = iframe.contentWindow.document.getElementById("year").innerHTML;
- console.log('Inside slide2 '+elmnt.innerHTML);
+ console.log('Inside slide2 '+elmnt);
+if (number == '2'){
+ console.log('SLIDE TWO');
  document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_exports.html?year="+elmnt; 
+ } else if (number == '2'){
+  console.log('SLIDE THREE');
+   document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_imports.html?year="+elmnt; 
+ }
 }
 
 // Third slide
 function slidethree() {
  console.log('SLIDE THREE');
  elmnt = iframe.contentWindow.document.getElementById("year").innerHTML;
-console.log('Inside slidethree '+elmnt.innerHTML);
+console.log('Inside slidethree '+elmnt);
  document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_imports.html?year="+elmnt; 
 }
 
