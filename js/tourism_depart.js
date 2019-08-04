@@ -106,7 +106,7 @@ legenditem.append("text")
 .text(function(d, i) { return legendText[i]; });
 
 function update(year){
-console.log(year);
+
 slider.property("value", year);
 d3.select(".year").text(year);
 countryShapes.style("fill", function(d) {
