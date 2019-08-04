@@ -118,6 +118,7 @@ legenditem.append("text")
 .text(function(d, i) { return legendText[i]; });
 
 function update(year){
+localStorage.setItem("year", year);
 slider.property("value", year);
 d3.select(".year").text(year);
 countryShapes.style("fill", function(d) {
@@ -135,11 +136,11 @@ var slider = d3.select(".slider")
 .attr("step", 1)
 .on("input", function() {
 var year = this.value;
+
 update(year);
 });
 
 update(1998);
-
 
 }
 

@@ -62,7 +62,8 @@ body {
 
 
 <script>
- document.getElementById("slideframe").style.cssFloat = "center";
+var year=localStorage.getItem("year");
+console.log(year);
 // First slide
 function slideone() {
   //  for (i = 0; i < elements.length; i++) {
@@ -75,6 +76,7 @@ function slideone() {
 
 // Second slide
 function slidetwo() {
+ console.log('in slide2'+year);
  document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/index.html"; 
 }
 
@@ -93,6 +95,7 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
 </script>
 
 </body>
