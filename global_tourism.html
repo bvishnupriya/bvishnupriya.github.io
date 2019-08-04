@@ -57,7 +57,7 @@ body {
 <!-- Photo Grid -->
 
   <div class="resp-container">
-      <iframe id="slideframe" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="https://vishnupriya-b.github.io/DV-Narrative/tourism_arrivals.html" marginwidth="0" marginheight="0" style="height:820px; width:1220px" scrolling="no"></iframe>
+      <iframe id="slideframe" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="https://vishnupriya-b.github.io/DV-Narrative/tourism_arrivals.html" marginwidth="0" marginheight="0" style="height:810px; width:1220px" scrolling="no"></iframe>
   </div>
 
 
@@ -82,7 +82,10 @@ console.log('Inside value '+elmnt.innerHTML);
 
 // Third slide
 function slidethree() {
- document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_imports.html"; 
+var iframe = document.getElementById("slideframe");
+var elmnt = iframe.contentWindow.document.getElementById("year").innerHTML;
+console.log('Inside slidethree '+elmnt.innerHTML);
+ document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_imports.html?year="+elmnt; 
 }
 
 // Add active class to the current button (highlight it)

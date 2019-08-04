@@ -119,9 +119,12 @@ var year = this.value;
 
 update(year);
 });
-
+if(typeof yearFrom != "undefined"){
 update(yearFrom);
+}else{
+update(1998);	
+}
 
 }
 
-d3.select(self.frameElement).style("height", "820px");
+d3.select(self.frameElement).style("height", "810px");

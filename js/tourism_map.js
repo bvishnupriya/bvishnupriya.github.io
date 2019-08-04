@@ -147,4 +147,4 @@ update(1998);
 
 }
 
-d3.select(self.frameElement).style("height", "820px");
+d3.select(self.frameElement).style("height", "810px");
