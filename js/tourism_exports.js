@@ -80,7 +80,6 @@ svg.append("path")
 
 
 function update(year){
-localStorage.setItem("year", year);
 slider.property("value", year);
 d3.select(".year").text(year);
 countryShapes.style("fill", function(d) {

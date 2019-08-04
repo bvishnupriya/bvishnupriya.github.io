@@ -15,9 +15,14 @@ d3.select("body").append("div")
 .attr("class", "tooltip")
 .style("opacity", 0);
 
+
+var parameters = location.search.substring(1).split("&");
+var temp = parameters[0].split("=");
+var yearFrom = unescape(temp[1]);
+
 queue()
 .defer(d3.csv,
-"https://raw.githubusercontent.com/vishnupriya-b/CSV/master/WDIData_TourismArrival_NV.csv")
+"https://raw.githubusercontent.com/vishnupriya-b/CSV/master/WDIData_departures.csv")
 .defer(d3.json,
 "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
 .await(ready);
@@ -32,13 +37,13 @@ mapdata) {
 
 data.forEach(function(d) {
 d.CountryCode = d.CountryCode;
-d.Year =+d.Year;
+d.Years =+d.Years;
 d.Value=+d.Value;
 });
 
 var dataByCountyByYear = d3.nest()
 .key(function(d) { return d.CountryCode; })
-.key(function(d) { return d.Year; })
+.key(function(d) { return d.Years; })
 .map(data);
 
 
@@ -101,6 +106,7 @@ legenditem.append("text")
 .text(function(d, i) { return legendText[i]; });
 
 function update(year){
+console.log(year);
 slider.property("value", year);
 d3.select(".year").text(year);
 countryShapes.style("fill", function(d) {
@@ -142,7 +148,12 @@ var year = this.value;
 update(year);
 });
 
-update(1998);
+if(yearFrom != "undefined"){
+update(yearFrom);
+}else{
+update(1998);	
+}
+
 
 }
 
