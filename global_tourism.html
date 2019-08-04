@@ -66,12 +66,10 @@ body {
 //console.log(document.getElementById("year").value);
 // First slide
 
-document.getElementById("year").onchange = function() {myFunction()};
+var iframe = document.getElementById("slideframe");
+var elmnt = iframe.contentWindow.document.getElementsByTagName("p")[0];
+console.log(elmnt);
 
-function myFunction() {
-  var x = document.getElementById("year").value;
-  console.log(x);
-}
 function slideone() {
   //  for (i = 0; i < elements.length; i++) {
    // elements[i].style.msFlex = "100%";  // IE10
@@ -83,7 +81,7 @@ function slideone() {
 
 // Second slide
 function slidetwo() {
- console.log('in slide2 '+x);
+ console.log('in slide2 '+elmnt);
  document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_exports.html"; 
 }
 
