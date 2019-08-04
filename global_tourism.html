@@ -67,7 +67,7 @@ body {
 // First slide
 
 var iframe = document.getElementById("slideframe");
-var elmnt = iframe.contentWindow.document.getElementsByTagName("p")[0];
+var elmnt = iframe.contentWindow.document.getElementsById("year").value;
 console.log(elmnt);
 
 function slideone() {
@@ -81,7 +81,9 @@ function slideone() {
 
 // Second slide
 function slidetwo() {
- console.log('in slide2 '+elmnt);
+var iframe1 = document.getElementById("slideframe");
+var elmnt1 = iframe1.contentWindow.document.getElementsById("year");
+console.log('Inside'+elmnt1);
  document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_exports.html"; 
 }
 
