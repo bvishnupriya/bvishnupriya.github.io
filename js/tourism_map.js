@@ -70,24 +70,7 @@ var countryShapes = svg.selectAll(".country")
 .attr("class", "country")
 .attr("d", path);
 
-countryShapes
-.on("mouseover", function(d) {
-tooltip.transition()
-.duration(250)
-.style("opacity", 1);
-if(typeof d.years!= "undefined"){
-tooltip.html(
-"<strong>Country: </strong><span class='details'>" + d.years[1998][0].CountryName + "<br></span>" + "<strong>Visitors: </strong><span class='details'>" +format(d.years[1998][0].Value) +"</span>"
-)
-.style("left", (d3.event.pageX + 15) + "px")
-.style("top", (d3.event.pageY - 28) + "px");
-}
-})
-.on("mouseout", function(d) {
-tooltip.transition()
-.duration(250)
-.style("opacity", 0);
-});
+
 svg.append("path")
 .datum(topojson.feature(mapdata, function(a, b) { return a !== b; }))
 .attr("class", "countries")
@@ -127,6 +110,26 @@ var value =d.years[year][0].Value;
 return color(value)
 }
 });
+
+countryShapes
+.on("mouseover", function(d) {
+tooltip.transition()
+.duration(250)
+.style("opacity", 1);
+if(typeof d.years!= "undefined"){
+tooltip.html(
+"<strong>Country: </strong><span class='details'>" + d.years[year][0].CountryName + "<br></span>" + "<strong>Visitors: </strong><span class='details'>" +format(d.years[year][0].Value) +"</span>"
+)
+.style("left", (d3.event.pageX + 15) + "px")
+.style("top", (d3.event.pageY - 28) + "px");
+}
+})
+.on("mouseout", function(d) {
+tooltip.transition()
+.duration(250)
+.style("opacity", 0);
+});
+
 }
 var slider = d3.select(".slider")
 .append("input")
@@ -144,4 +147,4 @@ update(1998);
 
 }
 
-d3.select(self.frameElement).style("height", "685px");
+d3.select(self.frameElement).style("height", "820px");

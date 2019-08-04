@@ -124,4 +124,4 @@ update(yearFrom);
 
 }
 
-d3.select(self.frameElement).style("height", "685px");
+d3.select(self.frameElement).style("height", "820px");
