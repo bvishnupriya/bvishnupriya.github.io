@@ -123,7 +123,7 @@ tooltip.transition()
 .style("opacity", 1);
 if(typeof d.years!= "undefined"){
 tooltip.html(
-"<strong>Country: </strong><span class='details'>" + d.years[year][0].CountryName + "<br></span>" + "<strong>Visitors: </strong><span class='details'>" +format(d.years[year][0].Value) +"</span>"
+"<strong>Country: </strong><span class='details'>" + d.years[year][0].CountryName + "<br></span>" + "<strong>Departures: </strong><span class='details'>" +format(d.years[year][0].Value) +"</span>"
 )
 .style("left", (d3.event.pageX + 15) + "px")
 .style("top", (d3.event.pageY - 28) + "px");
