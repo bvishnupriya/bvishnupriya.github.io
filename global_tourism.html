@@ -62,9 +62,15 @@ body {
 
 
 <script>
-var year=localStorage.getItem("year");
-console.log(document.getElementById("year").value);
+//var year=localStorage.getItem("year");
+//console.log(document.getElementById("year").value);
 // First slide
+
+document.getElementById("year").onchange = function() {myFunction()};
+
+function myFunction() {
+  var x = document.getElementById("year").value;
+}
 function slideone() {
   //  for (i = 0; i < elements.length; i++) {
    // elements[i].style.msFlex = "100%";  // IE10
@@ -76,13 +82,13 @@ function slideone() {
 
 // Second slide
 function slidetwo() {
- console.log('in slide2'+year);
- document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/index.html"; 
+ console.log('in slide2 '+x);
+ document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_exports.html""; 
 }
 
 // Third slide
 function slidethree() {
- document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/index.html"; 
+ document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_imports.html"; 
 }
 
 // Add active class to the current button (highlight it)
