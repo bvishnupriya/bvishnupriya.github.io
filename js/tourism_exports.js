@@ -16,12 +16,17 @@ d3.select("body").append("div")
 .style("opacity", 0);
 var dFormat= d3.format(".0%");
 
+var parameters = location.search.substring(1).split("&");
+var temp = parameters[0].split("=");
+var yearFrom = unescape(temp[1]);
+
 queue()
 .defer(d3.csv,
 "https://raw.githubusercontent.com/vishnupriya-b/CSV/master/WDIData_exports.csv")
 .defer(d3.json,
 "https://raw.githubusercontent.com/vishnupriya-b/CSV/master/world.geojson")
 .await(ready);
+
 
 function ready(error, data,
 mapdata) {
@@ -67,24 +72,6 @@ var countryShapes = svg.selectAll(".country")
 .attr("class", "country")
 .attr("d", path);
 
-countryShapes
-.on("mouseover", function(d) {
-tooltip.transition()
-.duration(250)
-.style("opacity", 1);
-if(typeof d.years!= "undefined"){
-tooltip.html(
-"<strong>Country: </strong><span class='details'>" + d.years[1998][0].CountryName + "<br></span>" + "<strong>Exports(%): </strong><span class='details'>" +format(d.years[1998][0].Exports) +"</span>"
-)
-.style("left", (d3.event.pageX + 15) + "px")
-.style("top", (d3.event.pageY - 28) + "px");
-}
-})
-.on("mouseout", function(d) {
-tooltip.transition()
-.duration(250)
-.style("opacity", 0);
-});
 svg.append("path")
 .datum(topojson.feature(mapdata, function(a, b) { return a !== b; }))
 .attr("class", "countries")
@@ -102,6 +89,24 @@ var value =d.years[year][0].Exports;
 return color(value)
 }
 });
+countryShapes
+.on("mouseover", function(d) {
+tooltip.transition()
+.duration(250)
+.style("opacity", 1);
+if(typeof d.years!= "undefined"){
+tooltip.html(
+"<strong>Country: </strong><span class='details'>" + d.years[year][0].CountryName + "<br></span>" + "<strong>Exports(%): </strong><span class='details'>" +format(d.years[year][0].Exports) +"</span>"
+)
+.style("left", (d3.event.pageX + 15) + "px")
+.style("top", (d3.event.pageY - 28) + "px");
+}
+})
+.on("mouseout", function(d) {
+tooltip.transition()
+.duration(250)
+.style("opacity", 0);
+});
 }
 var slider = d3.select(".slider")
 .append("input")
@@ -115,7 +120,7 @@ var year = this.value;
 update(year);
 });
 
-update(1998);
+update(yearFrom);
 
 }
 
