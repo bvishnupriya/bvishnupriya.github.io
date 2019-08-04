@@ -85,7 +85,7 @@ slider.property("value", year);
 d3.select(".year").text(year);
 countryShapes.style("fill", function(d) {
 if(typeof d.years != "undefined"){
-var value =d.years[year][0].Exports;
+var value =d.years[year][0].Imports;
 return color(value)
 }
 });
@@ -96,7 +96,7 @@ tooltip.transition()
 .style("opacity", 1);
 if(typeof d.years!= "undefined"){
 tooltip.html(
-"<strong>Country: </strong><span class='details'>" + d.years[year][0].CountryName + "<br></span>" + "<strong>Exports(%): </strong><span class='details'>" +format(d.years[year][0].Exports) +"</span>"
+"<strong>Country: </strong><span class='details'>" + d.years[year][0].CountryName + "<br></span>" + "<strong>Imports(%): </strong><span class='details'>" +format(d.years[year][0].Imports) +"</span>"
 )
 .style("left", (d3.event.pageX + 15) + "px")
 .style("top", (d3.event.pageY - 28) + "px");
