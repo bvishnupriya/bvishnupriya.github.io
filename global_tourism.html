@@ -65,8 +65,6 @@ body {
 //var year=localStorage.getItem("year");
 //console.log(document.getElementById("year").value);
 // First slide
-var iframe = document.getElementById("slideframe");
-var elmnt;
 
 function slideone() {
 
@@ -78,7 +76,11 @@ function slideone() {
 
 // Second slide
 function slide(number) {
- elmnt = iframe.contentWindow.document.getElementById("year").innerHTML;
+ var iframe = document.getElementById("slideframe");
+ var elmnt;
+ if (iframe.contentWindow.document.getElementById("year") !== null){
+  elmnt = iframe.contentWindow.document.getElementById("year").innerHTML;
+ }
 if (number == '2'){
  document.getElementById("slideframe").src ="https://vishnupriya-b.github.io/DV-Narrative/tourism_departures.html?year="+elmnt; 
  } else if (number == '3'){
