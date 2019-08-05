@@ -64,7 +64,6 @@ d3.geo.mercator().scale(200).center([0,30]).translate([width / 2, height
 / 2]);
 
 var path = d3.geo.path().projection(projection);
-console.log(mapdata.features);
 
 var countryShapes = svg.selectAll(".country")
 .data(mapdata.features)
@@ -81,7 +80,6 @@ svg.append("path")
 
 
 function update(year){
-	console.log(year);
 slider.property("value", year);
 d3.select(".year").text(year);
 countryShapes.style("fill", function(d) {
@@ -122,10 +120,8 @@ update(year);
 });
 
 if(yearFrom != "undefined"){
-	console.log('yearFrom exist'+yearFrom);
 update(yearFrom);
 }else{
-	console.log('yearFrom not exist');
 update(1998);	
 }
 
